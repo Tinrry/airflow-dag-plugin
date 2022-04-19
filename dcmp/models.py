@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta
 
 import json
+
+
 from sqlalchemy.ext.declarative import declarative_base, declared_attr
 from sqlalchemy import (
     Column, Integer, String, DateTime, Text, Boolean, ForeignKey, PickleType,
@@ -11,7 +13,8 @@ import airflow
 from airflow.utils.db import provide_session
 from airflow.utils.email import send_email
 
-import settings as dcmp_settings
+import dcmp.settings as dcmp_settings
+from dcmp.tools.json_encoder import DateTimeEncoder
 
 Base = declarative_base()
 ID_LEN = 250
@@ -66,9 +69,10 @@ class DcmpDagConf(Base):
             res = {}
         return res
 
+
     def set_conf(self, value):
         if value:
-            self._conf = json.dumps(value)
+            self._conf = json.dumps(value, cls=DateTimeEncoder)
 
     @declared_attr
     def conf(cls):
@@ -132,15 +136,15 @@ class DcmpDag(Base):
     def end_editing(self):
         self.editing = False
 
-    # @provide_session
-    # def get_dcmp_dag_conf(self, version=None, session=None):
-    #     if not version:
-    #         version = self.version
-    #     dcmp_dag_conf = session.query(DcmpDagConf).filter(
-    #         DcmpDagConf.dag_id == self.id,
-    #         DcmpDagConf.version == version,
-    #     ).first()
-    #     return dcmp_dag_conf
+    @provide_session
+    def get_dcmp_dag_conf(self, version=None, session=None):
+        if not version:
+            version = self.version
+        dcmp_dag_conf = session.query(DcmpDagConf).filter(
+            DcmpDagConf.dag_id == self.id,
+            DcmpDagConf.version == version,
+        ).first()
+        return dcmp_dag_conf
 
     @provide_session
     def get_conf(self, pure=False, version=None, session=None):
