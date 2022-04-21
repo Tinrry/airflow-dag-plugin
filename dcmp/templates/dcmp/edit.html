@@ -5,7 +5,11 @@
 {% block head %}
     {{ super() }}
     {{ lib.form_css() }}
-    <link href="{{ url_for("static", filename="bootstrap-toggle.min.css") }}" rel="stylesheet" type="text/css">
+
+
+
+    <link href="{{ url_for('dag_creation_manager_bp.static', filename='vendor/bootstrap-toggle/css/bootstrap-toggle.min.css') }}"
+          rel="stylesheet" type="text/css">
     <link href="{{ url_for('dag_creation_manager_bp.static', filename='dcmp/css/jquery-ui.css') }}" type="text/css"
           rel="stylesheet" media="all">
     <link href="{{ url_for('dag_creation_manager_bp.static', filename='dcmp/css/edit.css') }}" rel="stylesheet"
@@ -86,7 +90,7 @@
         }
         window.conf = {{ conf|tojson }};
     </script>
-    <script src="{{ url_for('static', filename='bootstrap-toggle.min.js') }}"></script>
+    <script src="{{ url_for('dag_creation_manager_bp.static', filename='vendor/bootstrap-toggle/js/bootstrap-toggle.min.js') }}"></script>
     <script src="{{ url_for('dag_creation_manager_bp.static', filename='dcmp/js/js.cookie.js') }}"></script>
     <script src="{{ url_for('dag_creation_manager_bp.static', filename='dcmp/js/ace.js') }}"></script>
     <script src="{{ url_for('dag_creation_manager_bp.static', filename='dcmp/js/mode-sql.js') }}"></script>

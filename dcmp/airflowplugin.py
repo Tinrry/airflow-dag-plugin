@@ -182,7 +182,6 @@ class RequestArgsFilter(object):
 
 
 class DagCreationManager(AppBuilderBaseView):
-    name = "dag"
     CONSTANT_KWS = {
         "TASK_TYPES": dcmp_settings.TASK_TYPES,
         "DAG_CREATION_MANAGER_LINE_INTERPOLATE": dcmp_settings.DAG_CREATION_MANAGER_LINE_INTERPOLATE,
@@ -368,7 +367,6 @@ class DagCreationManager(AppBuilderBaseView):
         return res
 
     @expose("/approve")
-    @login_required
     @provide_session
     def approve(self, session=None):
         if not can_access_approver():
@@ -399,7 +397,6 @@ class DagCreationManager(AppBuilderBaseView):
                            command_render=command_render)
 
     @expose("/compare")
-    @login_required
     @provide_session
     def compare(self, session=None):
         conf1 = {}
@@ -442,7 +439,6 @@ class DagCreationManager(AppBuilderBaseView):
 
     @expose("/graph_display", methods=["GET", "POST"])
     @csrf.exempt
-    @login_required
     @provide_session
     def graph_display(self, session=None):
 
@@ -467,7 +463,6 @@ class DagCreationManager(AppBuilderBaseView):
 
     @expose("/api", methods=["GET", "POST"])
     @csrf.exempt
-    @login_required
     @provide_session
     def api(self, session=None):
         user = get_current_user()

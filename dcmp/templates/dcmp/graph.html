@@ -94,8 +94,7 @@
 
 {% block tail %}
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js"></script>
-    <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
-    <script src="../dist/dagre-d3.js"></script>
+    <script src="{{ url_for('dag_creation_manager_bp.static', filename='vendor/dagre-d3/dist/dagre-d3.js') }}"></script>
     {{ super() }}
 {% endblock %}
 
