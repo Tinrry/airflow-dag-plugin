@@ -1,10 +1,11 @@
 {% extends "dcmp/master.html" %}
+{% import 'dcmp/lib.html' as lib with context %}
 
 {% block title %}DAG Configs{% endblock %}
 
 {% block head %}
     {{ super() }}
-
+    {{ lib.form_css() }}
     <style>
         span.highlighted{
             background: #F1C40F;
@@ -164,8 +165,8 @@
 
 {% block tail %}
 {{ super() }}
-
-
+<script src="{{ url_for('dag_creation_manager_bp.static', filename='admin/js/filters.js') }}"></script>
+{{ lib.form_js() }}
 <script language="javascript">
     (function($) {
         {% if filter_groups %}
@@ -177,7 +178,7 @@
         {% endif %}
     })(jQuery);
 </script>
-<script src="{{ url_for('static', filename='d3.v3.min.js') }}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js"></script>
 <script language="javascript">
     (function($) {
         $(".link-tooltip").tooltip();
