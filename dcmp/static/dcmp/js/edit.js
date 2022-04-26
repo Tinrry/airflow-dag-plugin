@@ -496,10 +496,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
         });
     };
     
-    $('body').scrollspy({
-        target: '.bs-docs-sidebar',
-        offset: 40
-    });
+    $("body").scrollspy({target: '.bs-docs-sidebar', offset: 40});
     
     if($("#task-list").length){
         $(window).resize(function() {
