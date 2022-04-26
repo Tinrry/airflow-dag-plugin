@@ -3,7 +3,7 @@
           rel="stylesheet">
     <link href="{{ url_for('dag_creation_manager_bp.static', filename='vendor/select2/select2-bootstrap3.css') }}"
           rel="stylesheet">
-    <link href="{{ url_for('dag_creation_manager_bp.static', filename='vendor/bootstrap-daterangepicker/daterangepicker-bs3.css') }}"
+    <link href="{{ url_for('dag_creation_manager_bp.static', filename='vendor/daterangepicker-bs3.css') }}"
           rel="stylesheet">
     {% if config.MAPBOX_MAP_ID %}
         <link href="{{ url_for('dag_creation_manager_bp.static', filename='vendor/leaflet/leaflet.css') }}"
@@ -38,9 +38,13 @@
             <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places&key={{ config.get('GOOGLE_MAPS_API_KEY') }}"></script>
         {% endif %}
     {% endif %}
-    <script src="{{ url_for('dag_creation_manager_bp.static', filename='vendor/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+
     {% if editable_columns %}
         <script src="{{ url_for('dag_creation_manager_bp.static', filename='vendor/x-editable/js/bootstrap3-editable.min.js') }}"></script>
     {% endif %}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
     <script src="{{ url_for('dag_creation_manager_bp.static', filename='admin/js/form.js') }}"></script>
 {% endmacro %}

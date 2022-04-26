@@ -256,7 +256,7 @@ class DagCreationManager(AppBuilderBaseView):
                     searched_dcmp_dags.append(dcmp_dag)
             dcmp_dags = searched_dcmp_dags
 
-        return self.render_template("dcmp/index.html",
+        return self.render_template("dcmp/list.html",
                                     can_access_approver=can_access_approver(),
                                     dcmp_dags=dcmp_dags,
                                     dcmp_dags_count=dcmp_dags_count,
