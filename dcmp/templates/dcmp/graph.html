@@ -103,7 +103,7 @@
 
 {% block tail %}
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js"></script>
-    <script src="{{ url_for('dag_creation_manager_bp.static', filename='vendor/dagre-d3.js') }}"></script>
+    <script src="{{ url_for('dag_creation_manager_bp.static', filename='vendor/dagre-d3.min.js') }}"></script>
     {{ super() }}
 {% endblock %}
 
